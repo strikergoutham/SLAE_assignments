@@ -15,7 +15,7 @@ int main()
 	client_addr.sin_port = htons(4444);
 
 	//set IP address to connect
-	client_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	client_addr.sin_addr.s_addr = inet_addr("127.1.1.1");
 	
 	
 	//connects using the created sock to the properties set at client_addr
