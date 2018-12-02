@@ -1,3 +1,6 @@
+#Crypter AES - 256
+#Author : goutham madhwaraj
+#website : https://barriersec.com
 import hashlib
 from Crypto.Cipher import AES
 from Crypto import Random
