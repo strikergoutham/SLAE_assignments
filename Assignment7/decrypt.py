@@ -23,7 +23,6 @@ print("Pycrypto AES-256 crypter\n")
 secret = args.key
 shellcode = args.shellcode.encode()
 
-print("test...\n",shellcode)
 
 print("provided key :\t",secret,"\n")
 print("encoded shellcode :\t",shellcode,"\n")
